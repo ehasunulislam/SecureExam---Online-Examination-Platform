@@ -45,7 +45,8 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="text-xl font-bold ml-2 flex items-center gap-2 ">
-          <span className="text-primary gradient-badge p-2 rounded-lg"><IoShield /></span> <span className="text-primary text-[1.5rem]">SecureExam</span>
+          <span className="text-primary gradient-badge p-2 rounded-lg"><IoShield /></span> 
+          <span className="text-primary text-[1.5rem]">SecureExam</span>
         </Link>
       </div>
 

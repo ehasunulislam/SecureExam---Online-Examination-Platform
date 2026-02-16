@@ -26,7 +26,7 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-4 lg:px-8">
+    <div className="navbar bg-base-100 px-4 lg:px-8 fixed top-0 left-0 right-0 z-50">
       {/* Left Side */}
       <div className="navbar-start">
         {/* Mobile Menu Button */}

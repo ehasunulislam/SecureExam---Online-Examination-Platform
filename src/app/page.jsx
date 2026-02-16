@@ -1,12 +1,14 @@
-import HomeHero from "@/Components/Hero-Section/Home-Hero/HomeHero";
-import Trusted from "@/Components/Hero-Section/Trusted/Trusted";
-import Image from "next/image";
+import GetStarted from "@/Components/Home/Get-Started/GetStarted";
+import HomeHero from "@/Components/Home/Home-Hero/HomeHero";
+import Trusted from "@/Components/Home/Trusted/Trusted";
+
 
 export default function Home() {
   return (
    <div>
     <HomeHero />
     <Trusted />
+    <GetStarted />
    </div>
   );
 }

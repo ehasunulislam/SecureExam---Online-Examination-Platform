@@ -1,7 +1,17 @@
 @import "tailwindcss";
+@plugin "daisyui"{
+  themes: light --default;
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: blue;
+  --color-primary: #0d7c66;
   --color-secondary: teal;
+}
+
+/* ✅ Custom class outside daisy theme */
+.gradient-badge {
+  background: linear-gradient(135deg, #d7c3f1 0%, #bde8ca 100%);
+  color: #0d7c66;
 }

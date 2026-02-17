@@ -126,6 +126,24 @@ const AboutSction = () => {
           </div>
         </div>
       </section>
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-gradient-to-r from-[#0D7C66] to-[#41B3A2] text-white text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div>
+            <h3 className="text-3xl font-bold">50K+</h3>
+            <p className="mt-2 text-white/90">Active Students</p>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-bold">10K+</h3>
+            <p className="mt-2 text-white/90">Exams Conducted</p>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-bold">98%</h3>
+            <p className="mt-2 text-white/90">Satisfaction Rate</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

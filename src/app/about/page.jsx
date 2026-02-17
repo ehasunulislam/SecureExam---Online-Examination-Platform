@@ -277,6 +277,42 @@ const AboutSction = () => {
           </div>
         </div>
       </section>
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0D7C66]">
+            FAQs
+          </h2>
+
+          <div className="mt-12 space-y-4 text-left">
+            <details className="p-4 border rounded-lg shadow-sm">
+              <summary className="cursor-pointer font-semibold text-[#0D7C66]">
+                Is SecureExam safe?
+              </summary>
+              <p className="mt-2 text-gray-600">
+                Yes, we use AI proctoring and secure data encryption.
+              </p>
+            </details>
+
+            <details className="p-4 border rounded-lg shadow-sm">
+              <summary className="cursor-pointer font-semibold text-[#0D7C66]">
+                Can I start a free trial?
+              </summary>
+              <p className="mt-2 text-gray-600">
+                Absolutely, click on Get Started to begin your trial.
+              </p>
+            </details>
+
+            <details className="p-4 border rounded-lg shadow-sm">
+              <summary className="cursor-pointer font-semibold text-[#0D7C66]">
+                Does it support large exams?
+              </summary>
+              <p className="mt-2 text-gray-600">
+                Yes, SecureExam can handle thousands of students simultaneously.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

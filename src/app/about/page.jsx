@@ -247,6 +247,36 @@ const AboutSction = () => {
           </div>
         </div>
       </section>
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-[#f8fafc]">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0D7C66]">
+            What Our Users Say
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="bg-white rounded-xl shadow-md p-6 text-gray-700">
+              <p className="italic">
+                "SecureExam simplified our online exams completely."
+              </p>
+              <h4 className="mt-4 font-bold text-[#0D7C66]">
+                University Admin
+              </h4>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6 text-gray-700">
+              <p className="italic">"AI proctoring is amazing and accurate!"</p>
+              <h4 className="mt-4 font-bold text-[#0D7C66]">Instructor</h4>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6 text-gray-700">
+              <p className="italic">
+                "Our students feel safe and the exams are fair."
+              </p>
+              <h4 className="mt-4 font-bold text-[#0D7C66]">Student</h4>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

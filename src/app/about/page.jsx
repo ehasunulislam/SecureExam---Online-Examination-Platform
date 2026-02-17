@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 const AboutSction = () => {
   return (
     <div className=" ">
@@ -14,6 +14,38 @@ const AboutSction = () => {
           security, fairness, and automation for institutions, coaching centers,
           and online educators.
         </p>
+      </section>
+      {/* mission section */}
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-white">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+            <Image
+              src="/images/heroimg.jpg"
+              alt="Mission Image"
+              width={400}
+              height={400}
+              className=""
+              priority
+            />
+          </div>
+
+          <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0D7C66]">
+              Our Mission
+            </h2>
+
+            <p className="text-gray-600 text-sm sm:text-base">
+              Our mission is to build a trusted digital examination environment
+              where institutions can conduct exams securely without compromising
+              fairness.
+            </p>
+
+            <p className="text-gray-600 text-sm sm:text-base">
+              We focus on automation, smart monitoring, and instant evaluation
+              systems to improve academic efficiency.
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );

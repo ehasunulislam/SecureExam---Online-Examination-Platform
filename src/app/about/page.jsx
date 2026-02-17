@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { IoShieldCheckmark, IoStatsChart } from "react-icons/io5";
 import { FaUsers, FaLightbulb } from "react-icons/fa";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
 const AboutSction = () => {
   return (
     <div className=" ">
@@ -83,6 +84,43 @@ const AboutSction = () => {
               </h3>
               <p className="text-gray-600 mt-1 text-sm text-center">
                 Handle thousands of students simultaneously.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0D7C66]">
+            Our Core Values
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="flex flex-col items-center gap-4 p-6">
+              <FaLightbulb size={40} className="text-[#0D7C66]" />
+              <h3 className="text-lg font-semibold text-[#0D7C66]">
+                Innovation
+              </h3>
+              <p className="text-gray-600 text-sm text-center">
+                Continuous improvement with modern technologies.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 p-6">
+              <HiOutlineAcademicCap size={40} className="text-[#0D7C66]" />
+              <h3 className="text-lg font-semibold text-[#0D7C66]">Learning</h3>
+              <p className="text-gray-600 text-sm text-center">
+                Education-focused platform for students and instructors.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 p-6">
+              <FaUsers size={40} className="text-[#0D7C66]" />
+              <h3 className="text-lg font-semibold text-[#0D7C66]">
+                Reliability
+              </h3>
+              <p className="text-gray-600 text-sm text-center">
+                Stable system with high uptime and security.
               </p>
             </div>
           </div>

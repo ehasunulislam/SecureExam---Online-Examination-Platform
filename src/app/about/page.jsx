@@ -144,6 +144,109 @@ const AboutSction = () => {
           </div>
         </div>
       </section>
+
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0D7C66]">
+            Meet Our Team
+          </h2>
+          <p className="mt-4 text-gray-700 mb-10">
+            Professionals dedicated to making exams fair and efficient.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/arzoo.png"
+                  alt="Arzoo Ahmed"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Arzoo Ahmed</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/sadia.png"
+                  alt="Sadia Rahman"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Sadia Rahman</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/saima.png"
+                  alt="Saima Khan"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Saima Khan</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/ehasun.png"
+                  alt="Ehasun Ul Islam"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Ehasun Ul Islam</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/abir.png"
+                  alt="Abir"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Abir</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+
+            <div className="flex flex-col items-center bg-[#BDE8CA] rounded-xl p-6 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                <Image
+                  src="/images/nimmy.png"
+                  alt="Nimmy"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+              <h4 className="font-bold text-[#0D7C66]">Nimmy</h4>
+              <p className="text-gray-600 text-sm text-center">Web Developer</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

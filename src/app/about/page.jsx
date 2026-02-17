@@ -3,6 +3,7 @@ import Image from "next/image";
 import { IoShieldCheckmark, IoStatsChart } from "react-icons/io5";
 import { FaUsers, FaLightbulb } from "react-icons/fa";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
+import Link from "next/link";
 const AboutSction = () => {
   return (
     <div className=" ">
@@ -312,6 +313,22 @@ const AboutSction = () => {
             </details>
           </div>
         </div>
+      </section>
+      <section className="px-4 sm:px-6 lg:px-12 py-16 bg-gradient-to-br from-[#0D7C66] via-[#41B3A2] to-[#BDE8CA] text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white">
+          Ready to Transform Your Exam System?
+        </h2>
+
+        <p className="mt-4 text-white/90">
+          Join SecureExam and experience secure & automated online testing.
+        </p>
+
+        <Link
+          href="#"
+          className="inline-block mt-8 px-8 py-3 bg-white text-[#0D7C66] font-semibold rounded-lg hover:shadow-xl transition"
+        >
+          Get Started
+        </Link>
       </section>
     </div>
   );

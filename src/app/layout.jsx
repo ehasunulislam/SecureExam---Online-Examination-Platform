@@ -12,13 +12,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Registration",
-  description: "Registration for getting more features access",
+  title: "SecureExam",
+  description: "Secure Online Examination System",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="secureexam">
+      {" "}
+      {/*added data-theme */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

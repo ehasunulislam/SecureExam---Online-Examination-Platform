@@ -30,6 +30,81 @@ const registration = () => {
           </h2>
           <p className="text-gray-500 text-sm">Join SecureExam today</p>
         </div>
+
+        {/* Role selection */}
+        <div className="flex justify-center gap-2 mb-6">
+          <span className="px-5 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
+            Admin
+          </span>
+          <span className="px-5 py-2 rounded-full text-sm font-medium bg-[#0D7C66] text-white">
+            Instructor
+          </span>
+          <span className="px-5 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
+            Student
+          </span>
+        </div>
+
+        {/* registration form */}
+        <form>
+          {/* Full Name */}
+          <div className="relative mb-5">
+            <input
+              required
+              type="text"
+              placeholder="Full name"
+              className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
+              readOnly
+            />
+          </div>
+
+          {/* Email */}
+          <div className="relative mb-5">
+            <input
+              required
+              type="email"
+              placeholder="Email address"
+              className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
+              readOnly
+            />
+          </div>
+          {/* Password */}
+          <div className="relative mb-2">
+            <input
+              required
+              type="password"
+              placeholder="Password"
+              className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
+              readOnly
+            />
+          </div>
+
+          {/* Password Strength Indicator */}
+          <div className="mb-4">
+            <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-full w-2/3 bg-[#41B3A2] rounded-full"></div>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Medium strength</p>
+          </div>
+          {/* Confirm Password */}
+          <div className="relative mb-5">
+            <input
+              required
+              type="password"
+              placeholder="Confirm password"
+              className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
+              readOnly
+            />
+          </div>
+          {/* Phone (Optional) */}
+          <div className="relative mb-5">
+            <input
+              type="tel"
+              placeholder="Phone number (optional)"
+              className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
+              readOnly
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

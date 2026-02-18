@@ -21,7 +21,7 @@ export default function Login() {
       email: form.email,
       password: form.password,
     };
-    
+
     console.log("LOGIN DATA:", payload);
   };
 
@@ -33,18 +33,18 @@ export default function Login() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-14 h-14 mx-auto rounded-full bg-[#0D7C66] flex items-center justify-center text-white text-2xl font-bold mb-4">
-              🔐
+              s
             </div>
             <h1 className="text-3xl font-bold text-[#1e293b]">Welcome Back</h1>
-            <p className="text-[#64748b] mt-2">Sign in to continue</p>
+            <p className="text-[#64748b] mt-2">Please sign in to continue</p>
           </div>
 
           {/* Role Pills */}
           <div className="flex gap-2 mb-6 justify-center">
             {[
-              { key: "admin", label: "👑 Admin" },
-              { key: "instructor", label: "📚 Instructor" },
-              { key: "student", label: "🎓 Student" },
+              { key: "admin", label: "Admin" },
+              { key: "instructor", label: "Instructor" },
+              { key: "student", label: "Student" },
             ].map((item) => (
               <button
                 key={item.key}
@@ -126,21 +126,21 @@ export default function Login() {
               type="submit"
               className="w-full bg-[#0D7C66] text-white py-2 rounded-lg font-medium hover:bg-[#41B3A2] hover:-translate-y-[1px] transition-all"
             >
-              Login as {role.charAt(0).toUpperCase() + role.slice(1)}
+              Sign in as {role.charAt(0).toUpperCase() + role.slice(1)}
             </button>
           </form>
 
           {/* Divider */}
           <div className="flex items-center my-6 gap-3">
             <div className="flex-1 border-t border-[#e2e8f0]"></div>
-            <span className="text-[#94a3b8] text-sm">or continue with</span>
+            <span className="text-[#94a3b8] text-sm">or sign in with</span>
             <div className="flex-1 border-t border-[#e2e8f0]"></div>
           </div>
 
           {/* Google Button */}
           <button className="w-full flex items-center justify-center gap-3 py-2 rounded-lg bg-[#f8fafc] border border-[#e2e8f0] hover:bg-white hover:border-[#41B3A2] transition text-[#475569] hover:text-[#1e293b] font-medium">
             <span className="text-[#DB4437] text-lg">G</span>
-            Continue with Google
+            Google
           </button>
 
           {/* Register */}

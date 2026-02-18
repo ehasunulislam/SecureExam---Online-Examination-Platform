@@ -1,6 +1,7 @@
 import { GraduationCap, Shield } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { FcGoogle } from "react-icons/fc";
 
 const registration = () => {
   return (
@@ -131,6 +132,40 @@ const registration = () => {
               </Link>
             </label>
           </div>
+          {/* Register Button */}
+          <button
+            type="button"
+            className="w-full py-3 rounded-xl text-white font-semibold text-sm bg-[#0D7C66] cursor-default"
+          >
+            Create Account
+          </button>
+
+          {/* Divider */}
+          <div className="flex items-center my-6">
+            <div className="flex-1 border-t border-gray-200"></div>
+            <span className="px-4 text-xs text-gray-400">Or sign up with</span>
+            <div className="flex-1 border-t border-gray-200"></div>
+          </div>
+
+          {/* Google Button */}
+          <button
+            type="button"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-gray-200 bg-gray-50 cursor-default mb-6"
+          >
+            <FcGoogle className="w-5 h-5" />
+            <span className="text-sm font-medium text-gray-700">Google</span>
+          </button>
+
+          {/* Login Link */}
+          <p className="text-center text-gray-500 text-sm">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="text-[#0D7C66] font-medium hover:text-[#41B3A2] transition-colors"
+            >
+              Sign in
+            </Link>
+          </p>
         </form>
       </div>
     </div>

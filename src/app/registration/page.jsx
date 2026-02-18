@@ -1,4 +1,5 @@
 import { GraduationCap, Shield } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const registration = () => {
@@ -99,10 +100,36 @@ const registration = () => {
           <div className="relative mb-5">
             <input
               type="tel"
-              placeholder="Phone number (optional)"
+              placeholder="Phone number"
               className="w-full pl-4 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm bg-gray-50 text-gray-700"
               readOnly
             />
+          </div>
+          {/* Terms Checkbox */}
+          <div className="flex items-start space-x-2 mb-6">
+            <input
+              type="checkbox"
+              id="terms"
+              checked
+              readOnly
+              className="w-4 h-4 mt-1 rounded border-gray-300 text-[#0D7C66]"
+            />
+            <label htmlFor="terms" className="text-sm text-gray-600">
+              I agree to the{" "}
+              <Link
+                href="#"
+                className="text-[#0D7C66] hover:text-[#41B3A2] transition-colors"
+              >
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="#"
+                className="text-[#0D7C66] hover:text-[#41B3A2] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </label>
           </div>
         </form>
       </div>

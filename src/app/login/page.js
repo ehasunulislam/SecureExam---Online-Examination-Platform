@@ -33,7 +33,7 @@ export default function Login() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-14 h-14 mx-auto rounded-full bg-[#0D7C66] flex items-center justify-center text-white text-2xl font-bold mb-4">
-              s
+              ⛉
             </div>
             <h1 className="text-3xl font-bold text-[#1e293b]">Welcome Back</h1>
             <p className="text-[#64748b] mt-2">Please sign in to continue</p>

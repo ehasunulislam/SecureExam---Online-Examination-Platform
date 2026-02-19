@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Data Structures Midterm",
+    "course": "CSE 2203",
+    "date": "2026-03-05",
+    "time": "10:00 AM",
+    "duration": "1 Hour",
+    "totalMarks": 50
+  },
+  {
+    "id": 2,
+    "title": "Database Systems Quiz",
+    "course": "CSE 3107",
+    "date": "2026-03-08",
+    "time": "2:30 PM",
+    "duration": "30 Minutes",
+    "totalMarks": 20
+  }
+]

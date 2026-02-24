@@ -1,35 +1,45 @@
 import { NextResponse } from "next/server";
 import { getCollection } from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
 
 export async function POST(req) {
   try {
     const data = await req.json();
-    const collection = await getCollection("examAttempts");
 
-    // Calculate marks automatically
+    const questionsCollection = await getCollection("questions");
+    const attemptsCollection = await getCollection("examAttempts");
+
+    const questions = await questionsCollection
+      .find({ examId: data.examId })
+      .toArray();
+
+    let score = 0;
     let totalMarks = 0;
-    data.answers.forEach((ans) => {
-      if (ans.answer === ans.correctAnswer) totalMarks += ans.marks;
+
+    questions.forEach((q) => {
+      totalMarks += q.marks;
+
+      if (data.answers[q._id] === q.correctOption) {
+        score += q.marks;
+      }
     });
 
     const attempt = {
-      examId: new ObjectId(data.examId),
-      studentId: new ObjectId(data.studentId),
+      examId: data.examId,
+      studentId: data.studentId,
       answers: data.answers,
+      score,
       totalMarks,
       submittedAt: new Date(),
     };
 
-    const result = await collection.insertOne(attempt);
+    await attemptsCollection.insertOne(attempt);
 
     return NextResponse.json({
-      message: "Exam submitted successfully",
-      insertedId: result.insertedId,
+      message: "Exam submitted",
+      score,
       totalMarks,
     });
   } catch (error) {
-    console.error("POST /exam-attempts Error:", error.message);
     return NextResponse.json(
       { error: "Failed to submit exam" },
       { status: 500 },

@@ -1,15 +1,38 @@
-// api/exams/route.js
 import { NextResponse } from "next/server";
 import { getCollection } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 
-export async function GET() {
+// GET exams
+export async function GET(req) {
   try {
-    const collection = await getCollection("exams");
-    const exams = await collection.find({}).toArray();
-    return NextResponse.json(exams);
+    const { searchParams } = new URL(req.url);
+    const instructorId = searchParams.get("instructorId");
+
+    const examsCollection = await getCollection("exams");
+    const questionsCollection = await getCollection("questions");
+
+    let query = {};
+    if (instructorId) {
+      query.instructorId = instructorId;
+    }
+
+    const exams = await examsCollection.find(query).toArray();
+
+    const examsWithQuestions = await Promise.all(
+      exams.map(async (exam) => {
+        const questions = await questionsCollection
+          .find({ examId: exam._id.toString() })
+          .toArray();
+
+        return {
+          ...exam,
+          questions,
+        };
+      }),
+    );
+
+    return NextResponse.json(examsWithQuestions);
   } catch (error) {
-    console.error("GET /exams Error:", error.message);
     return NextResponse.json(
       { error: "Failed to fetch exams" },
       { status: 500 },
@@ -17,6 +40,7 @@ export async function GET() {
   }
 }
 
+// CREATE exam
 export async function POST(req) {
   try {
     const data = await req.json();
@@ -24,23 +48,22 @@ export async function POST(req) {
 
     const exam = {
       title: data.title,
-      duration: data.duration, // in minutes
-      batchIds: (data.batchIds || []).map((id) => new ObjectId(id)),
-      startTime: new Date(data.startTime),
-      endTime: new Date(data.endTime),
-      published: false, // default unpublished
+      duration: data.duration,
+      batchIds: data.batchIds || [],
+      instructorId: data.instructorId,
+      startTime: data.startTime,
+      endTime: data.endTime,
+      published: false,
       createdAt: new Date(),
-      instructorId: new ObjectId(data.instructorId),
     };
 
     const result = await collection.insertOne(exam);
 
     return NextResponse.json({
-      message: "Exam created successfully",
+      message: "Exam created",
       insertedId: result.insertedId,
     });
   } catch (error) {
-    console.error("POST /exams Error:", error.message);
     return NextResponse.json(
       { error: "Failed to create exam" },
       { status: 500 },
@@ -48,24 +71,25 @@ export async function POST(req) {
   }
 }
 
-export async function PATCH(req) {
+// Publish exam
+export async function PUT(req) {
   try {
-    const { examId, publish } = await req.json();
+    const data = await req.json();
     const collection = await getCollection("exams");
 
-    const result = await collection.updateOne(
-      { _id: new ObjectId(examId) },
-      { $set: { published: publish === true } },
+    await collection.updateOne(
+      { _id: new ObjectId(data.examId) },
+      {
+        $set: { published: true },
+      },
     );
 
     return NextResponse.json({
-      message: publish ? "Exam published successfully" : "Exam unpublished",
-      modifiedCount: result.modifiedCount,
+      message: "Exam published successfully",
     });
   } catch (error) {
-    console.error("PATCH /exams Error:", error.message);
     return NextResponse.json(
-      { error: "Failed to update exam status" },
+      { error: "Failed to publish exam" },
       { status: 500 },
     );
   }

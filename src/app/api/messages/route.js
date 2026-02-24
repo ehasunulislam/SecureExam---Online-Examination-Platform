@@ -4,10 +4,7 @@ import { getCollection } from "@/lib/dbConnect";
 export async function GET() {
   try {
     const collection = await getCollection("messages");
-    const messages = await collection
-      .find({})
-      .sort({ createdAt: -1 })
-      .toArray();
+    const messages = await collection.find({}).toArray();
 
     return NextResponse.json(messages);
   } catch (error) {
@@ -30,11 +27,10 @@ export async function POST(req) {
       createdAt: new Date(),
     };
 
-    const result = await collection.insertOne(message);
+    await collection.insertOne(message);
 
     return NextResponse.json({
       message: "Message sent",
-      insertedId: result.insertedId,
     });
   } catch (error) {
     return NextResponse.json(

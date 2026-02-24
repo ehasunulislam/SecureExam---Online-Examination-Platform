@@ -1,15 +1,34 @@
-// api/batches/route.js
 import { NextResponse } from "next/server";
 import { getCollection } from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
+
+// Helper function to send a message/notification to students
+async function sendBatchNotification(studentEmails, batchName) {
+  try {
+    const messagesCollection = await getCollection("messages");
+
+    const messages = studentEmails.map((email) => ({
+      to: email,
+      message: `You have been added to batch "${batchName}".`,
+      createdAt: new Date(),
+      read: false,
+    }));
+
+    if (messages.length > 0) {
+      await messagesCollection.insertMany(messages);
+    }
+  } catch (err) {
+    console.error("Failed to send batch notifications:", err);
+  }
+}
 
 export async function GET() {
   try {
-    const collection = await getCollection("batches");
-    const batches = await collection.find({}).toArray();
+    const batchesCollection = await getCollection("batches");
+    const batches = await batchesCollection.find({}).toArray();
+
     return NextResponse.json(batches);
   } catch (error) {
-    console.error("GET /batches Error:", error.message);
+    console.error(error);
     return NextResponse.json(
       { error: "Failed to fetch batches" },
       { status: 500 },
@@ -20,23 +39,42 @@ export async function GET() {
 export async function POST(req) {
   try {
     const data = await req.json();
-    const collection = await getCollection("batches");
+    const { name, studentEmails = [] } = data;
+
+    if (!name) {
+      return NextResponse.json(
+        { error: "Batch name is required" },
+        { status: 400 },
+      );
+    }
+
+    // Ensure batch name is unique
+    const batchesCollection = await getCollection("batches");
+    const existing = await batchesCollection.findOne({ name: name.trim() });
+    if (existing) {
+      return NextResponse.json(
+        { error: "Batch name already exists" },
+        { status: 400 },
+      );
+    }
 
     const batch = {
-      name: data.name,
-      instructorId: data.instructorId, // instructor creating the batch
-      studentEmails: data.studentEmails || [],
+      name: name.trim(),
+      students: studentEmails.map((email) => email.trim()),
       createdAt: new Date(),
     };
 
-    const result = await collection.insertOne(batch);
+    const result = await batchesCollection.insertOne(batch);
+
+    // Send notification to students
+    await sendBatchNotification(batch.students, batch.name);
 
     return NextResponse.json({
       message: "Batch created successfully",
-      insertedId: result.insertedId,
+      batchId: result.insertedId,
     });
   } catch (error) {
-    console.error("POST /batches Error:", error.message);
+    console.error(error);
     return NextResponse.json(
       { error: "Failed to create batch" },
       { status: 500 },
@@ -44,24 +82,32 @@ export async function POST(req) {
   }
 }
 
-export async function PATCH(req) {
+export async function DELETE(req) {
   try {
-    const { batchId, studentEmails } = await req.json();
-    const collection = await getCollection("batches");
+    const { searchParams } = new URL(req.url);
+    const batchId = searchParams.get("id");
 
-    const result = await collection.updateOne(
-      { _id: new ObjectId(batchId) },
-      { $addToSet: { studentEmails: { $each: studentEmails } } },
-    );
+    if (!batchId) {
+      return NextResponse.json(
+        { error: "Batch ID is required" },
+        { status: 400 },
+      );
+    }
 
-    return NextResponse.json({
-      message: "Students added successfully",
-      modifiedCount: result.modifiedCount,
+    const batchesCollection = await getCollection("batches");
+    const result = await batchesCollection.deleteOne({
+      _id: new ObjectId(batchId),
     });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ error: "Batch not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: "Batch deleted successfully" });
   } catch (error) {
-    console.error("PATCH /batches Error:", error.message);
+    console.error(error);
     return NextResponse.json(
-      { error: "Failed to add students" },
+      { error: "Failed to delete batch" },
       { status: 500 },
     );
   }

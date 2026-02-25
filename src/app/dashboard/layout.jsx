@@ -183,6 +183,13 @@ export default function DashboardLayout({ children }) {
                 <Link href="/dashboard/student/my-exams">My Exams</Link>
 
                 <Link href="/dashboard/student/results">Results</Link>
+
+                <Link
+                  href="/dashboard/student/notifications"
+                  className="hover:underline"
+                >
+                  Notifications
+                </Link>
               </>
             )}
           </nav>
